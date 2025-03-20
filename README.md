@@ -7,7 +7,7 @@ This project is a web application built using Java EE technologies, utilizing En
 Make sure you have the following installed before running the project:
 - JDK 8
 - Java EE 7
-- Payara Server 5.2022.5
+- Payara Server 5.2022.5 (or any server supporting JDK8, Java EE 7 and EJB) 
 - SQL Server (or the database you configured)
 - JDBC Driver supporting JDK 8
 
@@ -26,7 +26,7 @@ Start the Payara Server.
 Deploy the generated .war file to the Payara deploy folder.
 
 **Step 5**: Run the Application
-Access the application via http://localhost:8080/<your_project>.
+Access the application via http://localhost:8080/<your_project>. (ex: http://localhost:8080/BTL-Retail-EJB-war/product-manage)
 Ensure that the required services (EJB, Database, REST API) are running correctly.
 
 ## Troubleshooting
