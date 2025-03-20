@@ -37,7 +37,9 @@ Ensure that the required services (EJB, Database, REST API) are running correctl
 
 <img src="https://github.com/user-attachments/assets/d2cb9a7f-34bf-43bd-8be0-762f3052e351" width="500">
 
+
 <img src="https://github.com/user-attachments/assets/d981af32-aa5c-4fc2-a0ac-b129fca8daa2" width="500">
+
 
 <img src="https://github.com/user-attachments/assets/3c6462bc-c3d2-4c03-9139-3b991d7f9b8e" width="500">
 
