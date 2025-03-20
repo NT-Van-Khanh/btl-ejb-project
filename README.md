@@ -1,4 +1,7 @@
 # Project Setup Guide
+## Project Description
+This project is a web application built using Java EE technologies, utilizing Enterprise Java Beans (EJB) for business logic and data management.  It is divided into multiple components, including DTO, DAO, Bean, and Servlet, ensuring modularity and maintainability. The application interacts with an SQL database via JDBC and supports stateless session beans for efficient transaction handling.
+
 ## Prerequisites
 
 Make sure you have the following installed before running the project:
