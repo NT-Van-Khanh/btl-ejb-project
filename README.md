@@ -17,6 +17,7 @@ Make sure you have the following installed before running the project:
 
 **Step 2**: Configure Database
 Set up your database in SQL Server (or the database you configured).
+
 Update the database connection settings in persistence.xml.
 
 **Step 3**: Build the Project
@@ -26,7 +27,10 @@ Start the Payara Server.
 Deploy the generated .war file to the Payara deploy folder.
 
 **Step 5**: Run the Application
-Access the application via http://localhost:8080/<your_project>. (ex: http://localhost:8080/BTL-Retail-EJB-war/product-manage)
+Access the application via http://localhost:8080/<your_project>. 
+
+(ex: http://localhost:8080/BTL-Retail-EJB-war/product-manage)
+
 Ensure that the required services (EJB, Database, REST API) are running correctly.
 
 ## Troubleshooting
@@ -36,5 +40,7 @@ Ensure that the required services (EJB, Database, REST API) are running correctl
 
 ## Additional Notes
 The project follows a layered architecture with DAO, Service, and Servlet components.
+
 Uses Stateless EJB for transaction management and business logic.
+
 Ensure @EJB or @Inject is used properly in managed beans.
