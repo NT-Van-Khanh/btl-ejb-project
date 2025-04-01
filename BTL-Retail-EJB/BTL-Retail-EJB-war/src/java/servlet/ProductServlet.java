@@ -24,15 +24,31 @@ public class ProductServlet extends HttpServlet{
         super();
     }
     
-    
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws  ServletException, IOException{
         List<ProductDTO> products = productService.findAll();
         request.setAttribute("products",products);
-            request.getRequestDispatcher("/product-manage.jsp").forward(request, response);
+        request.getRequestDispatcher("/product-manage.jsp").forward(request, response);
+    }
+
+//    @Override
+//    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        boolean deleteSeccess = deleteProduct(req);
+//        if (deleteSeccess) resp.sendRedirect("/product-manage");
+//    }
+//    
+    private boolean  deleteProduct(HttpServletRequest req){
+        String id = req.getParameter("productId");
+        if(id == null) return false;
+        return productService.delete(id);        
     }
     
+    private ProductDTO getProductById(HttpServletRequest req, HttpServletResponse resp){
+        String productId = req.getParameter("productId");
+        ProductDTO p = productService.findById(productId);
+        return p;
+    }
+        
     @Override
     public String getServletInfo() {
         return "Short description";

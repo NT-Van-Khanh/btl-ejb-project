@@ -18,7 +18,7 @@ public class UnitMapper {
 //        return new UnitDTO(unit.getId(), unit.getName());
     }
 
-    static Unit toUnit(UnitDTO unitDTO) {
+    public static Unit toUnit(UnitDTO unitDTO) {
         return (unitDTO == null) ? null : new Unit(unitDTO.getId(), unitDTO.getName());
 //        if(unitDTO == null) return null;
 //        return new Unit(unitDTO.getId(), unitDTO.getName());

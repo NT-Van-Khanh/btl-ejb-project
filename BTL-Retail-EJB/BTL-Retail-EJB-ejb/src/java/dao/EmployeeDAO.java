@@ -8,7 +8,9 @@ import entity.Employee;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import javax.ejb.Stateless;
 
+@Stateless
 public class EmployeeDAO {
     @PersistenceContext
     private EntityManager em;
@@ -32,8 +34,9 @@ public class EmployeeDAO {
     public boolean delete(String id) {
         Employee employee = em.find(Employee.class, id);
         if (employee == null) return false;
-
-        em.remove(employee);
+        
+        employee.setFlag(true);
+        em.merge(employee);
         return true;
     }
 }

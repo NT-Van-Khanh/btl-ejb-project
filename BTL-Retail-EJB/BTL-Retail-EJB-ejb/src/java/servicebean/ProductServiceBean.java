@@ -10,10 +10,7 @@ import entity.Product;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.ejb.EJB;
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import mapper.ProductMapper;
 import service.ProductService;
 
@@ -33,6 +30,8 @@ public class ProductServiceBean implements ProductService{
     @Override
     public void add(ProductDTO product){
         Product p = ProductMapper.toProduct(product);
+        String newProductId = String.format("SP%06d",productDAO.count()+1);
+        p.setId(newProductId);
         productDAO.add(p);
     }
 

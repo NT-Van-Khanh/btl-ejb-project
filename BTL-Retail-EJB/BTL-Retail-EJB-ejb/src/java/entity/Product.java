@@ -5,11 +5,9 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -34,6 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "Product")
 @XmlRootElement
 @NamedQueries({
+    @NamedQuery(name = "Product.countAll", query = "SELECT COUNT(p) FROM Product p"),
     @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
     @NamedQuery(name = "Product.findById", query = "SELECT p FROM Product p WHERE p.id = :id"),
     @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name"),
@@ -68,7 +67,7 @@ public class Product implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "price")
-    private BigDecimal price;
+    private Integer price;
     @Basic(optional = false)
     @NotNull
     @Column(name = "last_update")
@@ -80,12 +79,12 @@ public class Product implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     @Basic(optional = false)
-    @NotNull
+    @NotNull    
     @Column(name = "flag")
     private boolean flag;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productId")
+    @OneToMany( mappedBy = "productId")
     private Collection<Productnutrient> productnutrientCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productId")
+    @OneToMany(mappedBy = "productId")
     private Collection<Orderitem> orderitemCollection;
     
     @JoinColumn(name = "brand_id", referencedColumnName = "id")
@@ -111,7 +110,7 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public Product(String id, String name, short quantity, BigDecimal price, Date lastUpdate, Date createdAt, boolean flag) {
+    public Product(String id, String name, short quantity, Integer price, Date lastUpdate, Date createdAt, boolean flag) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
@@ -153,11 +152,11 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
-    public BigDecimal getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -235,6 +234,10 @@ public class Product implements Serializable {
         this.unitId = unitId;
     }
 
+    public boolean isFlag() {
+        return flag;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

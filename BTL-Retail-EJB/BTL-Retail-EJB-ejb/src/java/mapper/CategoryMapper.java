@@ -12,12 +12,12 @@ import entity.Category;
  * @author ADMIN
  */
 public class CategoryMapper {
-    static CategoryDTO toCategoryDTO(Category category ){
+    public static CategoryDTO toCategoryDTO(Category category ){
         if (category == null) return null;
         return new CategoryDTO(category.getId(), category.getName());
     }
 
-    static Category toCategory(CategoryDTO categoryDTO) {
+    public static Category toCategory(CategoryDTO categoryDTO) {
         if (categoryDTO == null) return null;
         return new Category(categoryDTO.getId(),categoryDTO.getName());
     }

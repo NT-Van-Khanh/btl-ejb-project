@@ -10,7 +10,6 @@ import dto.EmployeeDTO;
 import dto.ProductDTO;
 import dto.UnitDTO;
 import entity.Product;
-
 /**
  *
  * @author ADMIN
@@ -34,7 +33,7 @@ public class ProductMapper {
         if(productDTO == null) return null;
         
         Product p = new Product(productDTO.getId(),productDTO.getName(), productDTO.getQuantity(), 
-                    productDTO.getPrice(),productDTO.getLastUpdate(),productDTO.getCreatedAt(),false);
+                    productDTO.getPrice() ,productDTO.getLastUpdate(),productDTO.getCreatedAt(),false);
         
         p.setUnitId(UnitMapper.toUnit(productDTO.getUnit()));
         p.setBrandId(BrandMapper.toBrand(productDTO.getBrand()));

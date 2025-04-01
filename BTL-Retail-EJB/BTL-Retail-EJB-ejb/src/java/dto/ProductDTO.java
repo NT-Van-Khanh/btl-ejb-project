@@ -5,8 +5,8 @@
 package dto;
 
 import entity.Orderitem;
-import entity.Product;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Date;
 
@@ -18,19 +18,18 @@ public class ProductDTO {
     private String id;
     private String name;
     private String detail;
-    private BigDecimal price;
+    private Integer price;
     private UnitDTO unit;
     private Short quantity;
     private Date lastUpdate;
     private Date createdAt;
     private BrandDTO brand;
     private CategoryDTO category;
-    private Collection<Orderitem> orderitemCollection;
     private EmployeeDTO employee;
     
     public ProductDTO() {}
 
-    public ProductDTO(String id, String name, String detail, BigDecimal price, UnitDTO unit, Short quantity, Date lastUpdate, Date createdAt, BrandDTO brand, CategoryDTO category, EmployeeDTO employee) {
+    public ProductDTO(String id, String name, String detail, Integer price, UnitDTO unit, Short quantity, Date lastUpdate, Date createdAt, BrandDTO brand, CategoryDTO category, EmployeeDTO employee) {
         this.id = id;
         this.name = name;
         this.detail = detail;
@@ -70,11 +69,11 @@ public class ProductDTO {
         this.detail = detail;
     }
 
-    public BigDecimal getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -104,13 +103,6 @@ public class ProductDTO {
         this.createdAt = createdAt;
     }
 
-    public Collection<Orderitem> getOrderitemCollection() {
-        return orderitemCollection;
-    }
-
-    public void setOrderitemCollection(Collection<Orderitem> orderitemCollection) {
-        this.orderitemCollection = orderitemCollection;
-    }
 
     public UnitDTO getUnit() {
         return unit;

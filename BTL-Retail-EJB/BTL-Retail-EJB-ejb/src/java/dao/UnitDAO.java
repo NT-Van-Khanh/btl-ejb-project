@@ -8,7 +8,9 @@ import entity.Unit;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import javax.ejb.Stateless;
 
+@Stateless
 public class UnitDAO {
     @PersistenceContext
     private EntityManager em;
@@ -33,7 +35,8 @@ public class UnitDAO {
         Unit unit = em.find(Unit.class, id);
         if (unit == null) return false;
 
-        em.remove(unit);
+        unit.setFlag(true);
+        em.merge(unit);
         return true;
     }
 }

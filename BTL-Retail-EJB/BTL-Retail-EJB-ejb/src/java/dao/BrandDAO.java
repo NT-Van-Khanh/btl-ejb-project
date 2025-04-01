@@ -8,7 +8,8 @@ import entity.Brand;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
-
+import javax.ejb.Stateless;
+@Stateless
 public class BrandDAO {
     @PersistenceContext
     private EntityManager em;
@@ -33,7 +34,8 @@ public class BrandDAO {
         Brand brand = em.find(Brand.class, id);
         if (brand == null) return false;
 
-        em.remove(brand);
+        brand.setFlag(true);
+        em.merge(brand);
         return true;
     }
 }

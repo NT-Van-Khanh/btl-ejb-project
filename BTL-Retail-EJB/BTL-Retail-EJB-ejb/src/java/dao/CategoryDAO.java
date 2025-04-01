@@ -8,7 +8,9 @@ import entity.Category;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import javax.ejb.Stateless;
 
+@Stateless
 public class CategoryDAO {
     @PersistenceContext
     private EntityManager em;
@@ -33,7 +35,8 @@ public class CategoryDAO {
         Category category = em.find(Category.class, id);
         if (category == null) return false;
 
-        em.remove(category);
+        category.setFlag(true);
+        em.merge(category);
         return true;
     }
 }

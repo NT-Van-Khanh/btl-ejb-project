@@ -9,6 +9,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 /**
  *
@@ -39,9 +40,22 @@ public class ProductDAO {
     public void add(Product product) {
         em.persist(product);
     }
-    
+    @Transactional
     public void update(Product product) {
-        em.merge(product);
+        Product existingProduct = em.find(Product.class, product.getId());
+        if (existingProduct != null) {
+            existingProduct.setName(product.getName());
+            existingProduct.setDetail(product.getDetail());
+            existingProduct.setQuantity(product.getQuantity());
+            existingProduct.setPrice(product.getPrice());
+            existingProduct.setLastUpdate(product.getLastUpdate()); // Cập nhật thời gian chỉnh sửa
+            existingProduct.setBrandId(product.getBrandId());
+            existingProduct.setCategoryId(product.getCategoryId());
+            existingProduct.setEmployeeId(product.getEmployeeId());
+            existingProduct.setUnitId(product.getUnitId());
+            em.merge(existingProduct);
+        }
+//        em.merge(product);
     }
     
     public boolean delete(String id){
@@ -50,6 +64,11 @@ public class ProductDAO {
         product.setFlag(true);
         em.merge(product);
         return true;
+    }
+    
+    public Long count(){
+        return em.createNamedQuery("Product.countAll",Long.class)
+                .getSingleResult();
     }
 //    public boolean delete(String id) {
 //        Product product = em.find(Product.class, id);

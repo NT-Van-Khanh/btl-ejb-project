@@ -53,8 +53,8 @@ public class Orderitem implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
-    @Column(name = "price")
-    private BigDecimal price;
+    @Column(name = "price", table = "Order_item")
+    private Integer price;
     @Column(name = "total_cost")
     private BigDecimal totalCost;
     @Basic(optional = false)
@@ -80,7 +80,7 @@ public class Orderitem implements Serializable {
         this.id = id;
     }
 
-    public Orderitem(Integer id, short quantity, BigDecimal price, Date createdAt, boolean flag) {
+    public Orderitem(Integer id, short quantity, Integer price, Date createdAt, boolean flag) {
         this.id = id;
         this.quantity = quantity;
         this.price = price;
@@ -104,11 +104,11 @@ public class Orderitem implements Serializable {
         this.quantity = quantity;
     }
 
-    public BigDecimal getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
